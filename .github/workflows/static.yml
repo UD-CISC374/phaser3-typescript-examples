@@ -43,7 +43,7 @@ jobs:
         run: |
           cd src/games/asteroid
           yarn
-          yarn run dev
+          webpack --mode development
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
