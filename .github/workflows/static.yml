@@ -41,9 +41,15 @@ jobs:
           cmd: install # will run `yarn install` command
       - name: Build
         run: |
-          cd src/games/asteroid
-          yarn
-          webpack --mode development
+          for dir in src/games/*; do
+            if [ -d "$dir" ]; then
+              echo "Building game in $dir"
+              cd $dir
+              yarn
+              webpack --mode development
+              cd ../../../
+            fi
+          done
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
